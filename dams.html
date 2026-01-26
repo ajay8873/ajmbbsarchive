@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAMS Premium | AJ MBBS ARCHIVE</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #6c5ce7;
+            --primary-light: #a29bfe;
+            --bg-light: #f8fafc;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --card-bg: #ffffff;
+            --nav-border: rgba(226, 232, 240, 0.8);
+            --glass: rgba(255, 255, 255, 0.95);
+            
+            /* DAMS Specific Accents */
+            --grand-test: #ff9f43; 
+            --revision-gold: #feca57;
+            --pyq-blue: #4834d4;
+        }
+
+        /* --- DARK MODE VARIABLES --- */
+        body.dark-mode {
+            --bg-light: #020617;
+            --text-main: #f1f5f9;
+            --text-sub: #94a3b8;
+            --card-bg: #0f172a;
+            --nav-border: rgba(30, 41, 59, 0.8);
+            --glass: rgba(15, 23, 42, 0.95);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s, color 0.3s; }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: var(--bg-light); 
+            color: var(--text-main);
+            padding: 90px 5% 40px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 75px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--nav-border);
+        }
+
+        .header-title { font-weight: 800; font-size: 1.1rem; text-transform: uppercase; }
+        .header-title span { color: var(--primary); }
+
+        .nav-controls { display: flex; align-items: center; gap: 20px; }
+        #themeToggle { background: none; border: none; cursor: pointer; color: var(--text-main); display: flex; }
+
+        /* --- NAVIGATION --- */
+        .back-btn { 
+            display: inline-block;
+            margin-bottom: 20px; 
+            color: var(--primary); 
+            text-decoration: none; 
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 10px; }
+        h1 span { color: var(--primary); }
+
+        h2 { 
+            font-size: 0.8rem; 
+            color: var(--text-sub); 
+            margin: 40px 0 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+        }
+        h2::after { content: ""; flex: 1; height: 1px; background: var(--nav-border); margin-left: 15px; }
+
+        /* --- GRID SYSTEM --- */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); 
+            gap: 12px; 
+        }
+
+        .subject-btn { 
+            padding: 18px 12px; 
+            background: var(--card-bg); 
+            border: 1px solid var(--nav-border); 
+            border-radius: 16px; 
+            text-align: center; 
+            text-decoration: none; 
+            color: var(--text-main); 
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            min-height: 60px;
+        }
+        
+        .subject-btn:hover { 
+            background: var(--primary); 
+            color: white !important; 
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px rgba(108, 92, 231, 0.15);
+        }
+
+        /* DAMS Specific Tag Colors */
+        .gt-btn { border-left: 5px solid var(--grand-test); }
+        .rev-btn { border-left: 5px solid var(--revision-gold); }
+        .pyq-btn { border-left: 5px solid var(--pyq-blue); }
+
+        @media (max-width: 480px) {
+            .grid { grid-template-columns: 1fr 1fr; }
+            h1 { font-size: 1.5rem; }
+        }
+    footer { text-align: center; padding: 20px; color: var(--text-sub); border-top: 1px solid var(--nav-border); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-title">AJ MBBS <span> ARCHIVE</span></div>
+        <div class="nav-controls">
+            <button id="themeToggle" aria-label="Toggle Theme">
+                <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    
+
+    <h1 data-aos="fade-down">DAMS <span>PREMIUM</span></h1>
+    <p style="text-align:center; color: var(--text-sub); font-size: 0.9rem;">Elite DQB, Grand Tests, and Revision Series</p>
+
+    <h2 data-aos="fade-up">Grand Tests & Mock Exams</h2>
+    <div class="grid" data-aos="fade-up">
+        <a href="DAMS_Grand_Test_1-30.html" class="subject-btn gt-btn">Grand Test 1-30</a>
+        <a href="DAMS_Grand_Test_30.html" class="subject-btn gt-btn">Grand Test 30+</a>
+        <a href="DAMS_Grand_Test_old.html" class="subject-btn gt-btn">Grand Test (Old)</a>
+        <a href="DAMS_Mock_Test.html" class="subject-btn gt-btn">DAMS Mock Test</a>
+        <a href="DAMS_NEETPG_Mock.html" class="subject-btn gt-btn">NEETPG Mock</a>
+        <a href="DAMS_INICET_Mock.html" class="subject-btn gt-btn">INICET Mock</a>
+        <a href="DAMS_FMGE_Mock.html" class="subject-btn gt-btn">FMGE Mock</a>
+    </div>
+
+    <h2 data-aos="fade-up">Revision & Special Series</h2>
+    <div class="grid" data-aos="fade-up">
+        <a href="DAMS_DVT_Test.html" class="subject-btn rev-btn">DVT Test</a>
+        <a href="DAMS_Transform_10X.html" class="subject-btn rev-btn">Transform 10X</a>
+        <a href="DAMS_SWT_Revision.html" class="subject-btn rev-btn">SWT Revision</a>
+        <a href="DAMS_MIQ.html" class="subject-btn rev-btn">Most Imp Qs</a>
+        <a href="DAMS_CT_NEETPG.html" class="subject-btn rev-btn">CT NEETPG</a>
+        <a href="DAMS_CT_MBBS.html" class="subject-btn rev-btn">CT MBBS</a>
+        <a href="DAMS_Subject_Test.html" class="subject-btn rev-btn">Subject Test</a>
+    </div>
+
+    <h2 data-aos="fade-up">PYQs & Competitive</h2>
+    <div class="grid" data-aos="fade-up">
+        <a href="DQB INICET_PYQ.html" class="subject-btn pyq-btn">INI-CET PYQ</a>
+        <a href="DQB AIIMS_2014-2018.html" class="subject-btn pyq-btn">AIIMS 2014-18</a>
+        <a href="DQB FMGE_PYQ.html" class="subject-btn pyq-btn">FMGE PYQ</a>
+        <a href="DAMS_Previous_Year_Paper.html" class="subject-btn pyq-btn">Previous Year Paper</a>
+    </div>
+
+    <h2 data-aos="fade-up">Standard DQB (19 Subjects)</h2>
+    <div class="grid" data-aos="fade-up">
+        <a href="DQB Anatomy.html" class="subject-btn">Anatomy</a>
+        <a href="DQB Physiology.html" class="subject-btn">Physiology</a>
+        <a href="DQB Biochemistry.html" class="subject-btn">Biochemistry</a>
+        <a href="DQB Pathology.html" class="subject-btn">Pathology</a>
+        <a href="DQB Microbiology.html" class="subject-btn">Microbiology</a>
+        <a href="DQB Pharmacology.html" class="subject-btn">Pharmacology</a>
+        <a href="DQB FMT.html" class="subject-btn">FMT</a>
+        <a href="DQB ENT.html" class="subject-btn">ENT</a>
+        <a href="DQB Ophthalmology.html" class="subject-btn">Ophthalmology</a>
+        <a href="DQB PSM.html" class="subject-btn">PSM</a>
+        <a href="DQB Medicine.html" class="subject-btn">Medicine</a>
+        <a href="DQB Surgery.html" class="subject-btn">Surgery</a>
+        <a href="DQB Gynaecology.html" class="subject-btn">OBG</a>
+        <a href="DQB Paediatrics.html" class="subject-btn">Paediatrics</a>
+        <a href="DQB Orthopaedics.html" class="subject-btn">Orthopaedics</a>
+        <a href="DQB Dermatology.html" class="subject-btn">Dermatology</a>
+        <a href="DQB Psychiatry.html" class="subject-btn">Psychiatry</a>
+        <a href="DQB Radiology.html" class="subject-btn">Radiology</a>
+        <a href="DQB Anesthesia.html" class="subject-btn">Anaesthesia</a>
+    </div>
+<br><br><br>
+    <footer>
+        &copy; 2026 AJ MBBS ARCHIVE | Elite Edition
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        const sunPath = "M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M17 12a5 5 0 1 1-10 0 5 5 0 0 1 10 0z";
+        const moonPath = "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z";
+
+        function updateIcon(isDark) {
+            if (themeIcon) {
+                themeIcon.querySelector('path').setAttribute('d', isDark ? sunPath : moonPath);
+            }
+        }
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            updateIcon(true);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            updateIcon(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+        function activateSubjectFromSearch() {
+        // 1. Get the subject from URL (?subject=Anatomy)
+        const params = new URLSearchParams(window.location.search);
+        let targetSubject = params.get('subject');
+
+        if (targetSubject) {
+            // Standardize names (e.g., "Ophthalmology" search should match "Ophtha" button)
+            const subjectMap = {
+                "Forensic Medicine": "FMT",
+                "Preventive & Social Medicine": "PSM",
+                "Ophthalmology": "Ophtha",
+                "Obstetrics & Gynecology": "OBG"
+            };
+            
+            if(subjectMap[targetSubject]) targetSubject = subjectMap[targetSubject];
+
+            // 2. Find all subject buttons
+            const buttons = document.querySelectorAll('.subject-btn');
+            let targetElement = null;
+
+            // 3. Loop to find the one that matches the text
+            buttons.forEach(btn => {
+                if (btn.innerText.trim().toLowerCase() === targetSubject.toLowerCase()) {
+                    targetElement = btn;
+                }
+            });
+
+            if (targetElement) {
+                // 4. Smooth scroll to the button
+                setTimeout(() => {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 500);
+
+                // 5. Apply the Clinical Highlight Effect
+                targetElement.style.background = "var(--primary-light)";
+                targetElement.style.color = "white";
+                targetElement.style.border = "2px solid var(--primary-light)";
+                targetElement.style.boxShadow = "0 0 20px rgba(0, 168, 255, 0.6)";
+                targetElement.style.transform = "scale(1.1)";
+
+                // 6. Fade out the highlight after 3 seconds but keep it visible
+                setTimeout(() => {
+                    targetElement.style.boxShadow = "none";
+                    targetElement.style.transform = "scale(1)";
+                }, 3000);
+            }
+        }
+    }
+
+    // Initialize as soon as the page is ready
+    window.addEventListener('load', activateSubjectFromSearch);
+
+    </script>
+</body>
+</html>

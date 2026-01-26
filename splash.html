@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJ MBBS Portal | Loading...</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&display=swap');
+
+        :root {
+            --primary: #6c5ce7;
+            --bg-light: #f8fafc;
+            --bg-dark: #020617;
+            --text-light: #1e293b;
+            --text-dark: #f1f5f9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+            transition: background-color 0.4s ease;
+        }
+
+        /* Dark Mode Consistency */
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        .splash-wrapper {
+            text-align: center;
+            animation: appAppear 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Modern Logo Style */
+        .logo-box {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary), #a29bfe);
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            box-shadow: 0 25px 50px rgba(108, 92, 231, 0.25);
+            position: relative;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .app-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .app-name span { color: var(--primary); }
+
+        /* Smooth Progress Loader */
+        .loading-container {
+            width: 180px;
+            height: 6px;
+            background: rgba(108, 92, 231, 0.1);
+            border-radius: 100px;
+            margin: 30px auto 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loading-bar {
+            width: 0%;
+            height: 100%;
+            background: var(--primary);
+            border-radius: 100px;
+            animation: fillBar 2.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+
+        .status-text {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.4;
+        }
+
+        /* Animations */
+        @keyframes appAppear {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fillBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="splash-wrapper">
+        <div class="logo-box">
+            <div class="logo-text">AJ</div>
+        </div>
+        <div class="app-name">MBBS <span>PORTAL</span></div>
+        <div class="loading-container">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="status-text">Elite Edition</div>
+    </div>
+
+    <script>
+        // 1. Maintain Theme Persistence
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // 2. Service Worker Registration
+        // This makes the "Install" button appear on other phones
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('PWA: Service Worker Registered'))
+                    .catch(err => console.log('PWA: Registration Failed', err));
+            });
+        }
+
+        // 3. Smart Redirect
+        // Wait for the bar animation (2.5s) then move to the home page
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 2800);
+    </script>
+</body>
+</html>
