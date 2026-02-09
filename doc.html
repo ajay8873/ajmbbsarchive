@@ -3,264 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doc Tutorials | Select Mode</title>
+    <title>Doc Tutorials | AJ MBBS ARCHIVE</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-
-        :root {
-            --primary: #00cec9; /* DocTutorials Teal */
-            --primary-light: #81ecec;
-            --bg-light: #f8fafc;
-            --text-main: #1e293b;
-            --text-sub: #64748b;
-            --card-bg: #ffffff;
-            --nav-border: rgba(226, 232, 240, 0.8);
-            --glass: rgba(255, 255, 255, 0.95);
-        }
-
-        /* --- DARK MODE VARIABLES --- */
-        body.dark-mode {
-            --bg-light: #020617;
-            --text-main: #f1f5f9;
-            --text-sub: #94a3b8;
-            --card-bg: #0f172a;
-            --nav-border: rgba(30, 41, 59, 0.8);
-            --glass: rgba(15, 23, 42, 0.95);
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s, color 0.3s; }
-
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: var(--bg-light); 
-            color: var(--text-main);
-            padding: 100px 5% 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* --- HEADER --- */
-        header {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 75px;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 5%;
-            z-index: 1000;
-            border-bottom: 1px solid var(--nav-border);
-        }
-
-        .header-title { font-weight: 800; font-size: 1.1rem; text-transform: uppercase; }
-        .header-title span { color: var(--primary); }
-
-        .nav-controls { display: flex; align-items: center; gap: 20px; }
-        #themeToggle { background: none; border: none; cursor: pointer; color: var(--text-main); display: flex; }
-
-        /* --- NAVIGATION --- */
-        .navigation-wrapper {
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .back-btn { 
-            display: inline-block;
-            margin-bottom: 25px; 
-            color: var(--primary); 
-            text-decoration: none; 
-            font-size: 0.9rem;
-            font-weight: 700;
-        }
-
-        h1 { font-size: 2.2rem; font-weight: 800; text-align: center; margin-bottom: 10px; }
-        h1 span { color: var(--primary); }
-
-        .note-card {
-            background: rgba(0, 206, 201, 0.1);
-            color: var(--primary);
-            padding: 10px 20px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid var(--primary);
-        }
-
-        /* --- CATEGORY GRID --- */
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 25px; 
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .subject-btn { 
-            padding: 50px 30px; 
-            background: var(--card-bg); 
-            border: 1px solid var(--nav-border); 
-            border-radius: 30px; 
-            text-align: center; 
-            text-decoration: none; 
-            color: var(--text-main); 
-            font-weight: 800;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        }
-        
-        .subject-btn:hover { 
-            background: var(--card-bg);
-            color: var(--primary); 
-            border-color: var(--primary);
-            transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(0, 206, 201, 0.15);
-        }
-
-        .btn-tag {
-            font-size: 0.75rem;
-            background: rgba(0, 206, 201, 0.15);
-            color: var(--primary);
-            padding: 6px 16px;
-            border-radius: 50px;
-            margin-bottom: 15px;
-            font-weight: 800;
-        }
-
-        @media (max-width: 480px) {
-            h1 { font-size: 1.8rem; }
-            .subject-btn { padding: 40px 20px; }
-            .grid { grid-template-columns: 1fr; }
-        }
-    footer { text-align: center; padding: 20px; color: var(--text-sub); border-top: 1px solid var(--nav-border); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; }
-    </style>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/subpage.css">
 </head>
 <body>
-
-    <header>
-        <div class="header-title">AJ MBBS <span>ARCHIVE</span></div>
-        <div class="nav-controls">
-            <button id="themeToggle" aria-label="Toggle Theme">
-                <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
+    <!-- HEADER -->
+    <header id="mainHeader">
+        <div class="header-left">
+            <button class="header-btn" id="menuBtn" aria-label="Open Menu">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <div class="header-brand">AJ MBBS <span>ARCHIVE</span></div>
+        </div>
+        <div class="header-right">
+            <div class="search-wrapper" id="searchWrapper">
+                <button class="header-btn" id="searchToggle" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+                <div class="search-expandable" id="searchExpandable">
+                    <input type="text" class="search-input" id="headerSearchInput" placeholder="Search subject..." oninput="liveSubjectSearch(this.value, 'headerSug')">
+                    <button class="search-clear" id="searchClear">&times;</button>
+                </div>
+                <div class="suggestions-dropdown" id="headerSug"></div>
+            </div>
+            <button class="header-btn" id="themeToggle" aria-label="Settings">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             </button>
         </div>
     </header>
 
-    <div class="navigation-wrapper">
-       
-    </div>
-    
-    <h1 data-aos="fade-down">DOC TUTORIALS <span>MODES</span></h1>
-    <div class="note-card" data-aos="fade-up">Note: Best viewed in desktop mode</div>
+    <!-- SIDEBAR -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">PORTAL INDEX</h2>
+            <button class="sidebar-close" id="sidebarClose">&times;</button>
+        </div>
+        <div class="sidebar-search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" placeholder="Search Subject..." oninput="liveSubjectSearch(this.value, 'sidebarSug')">
+            <div class="suggestions-dropdown sidebar-sug" id="sidebarSug"></div>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="marrow.html">MARROW</a></li>
+            <li><a href="prep.html">PREPLADDER</a></li>
+            <li><a href="cerebellum.html">CEREBELLUM</a></li>
+            <li><a href="doc.html">DOC TUTORIAL</a></li>
+            <li><a href="dams.html">DAMS / DVT</a></li>
+            <li><a href="egurukul.html">eGURUKUL</a></li>
+            <li><a href="surgery_dada.html">SURGERY DADA</a></li>
+        </ul>
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <div class="grid" data-aos="zoom-in">
-        <a href="proff.html" class="subject-btn">
-            <span class="btn-tag">University Prep</span>
-            PROFF EXAMS
-        </a>
-        
-        <a href="neetpg.html" class="subject-btn">
-            <span class="btn-tag">Competitive</span>
-            NEET PG Combined
-        </a>
-    </div>
-<br><br><br>
-    <footer>
-        &copy; 2026 AJ MBBS ARCHIVE | Elite Edition
+    <!-- PAGE CONTENT -->
+    <main class="page-content">
+        <h1 class="page-title" data-aos="fade-down">DOC TUTORIALS <span>MODES</span></h1>
+        <p class="page-subtitle">Select your exam preparation mode</p>
+
+        <div class="note-card" data-aos="fade-up">Note: Best viewed in desktop mode</div>
+
+        <div class="mode-grid" data-aos="zoom-in">
+            <a href="proff.html" class="mode-card">
+                <div class="mode-tag">University Prep</div>
+                PROFF EXAMS
+            </a>
+            <a href="neetpg.html" class="mode-card">
+                <div class="mode-tag">Competitive</div>
+                NEET PG Combined
+            </a>
+        </div>
+    </main>
+
+    <footer class="branded-footer">
+        <div class="footer-brand">AJ MBBS <span>ARCHIVE</span></div>
+        <div class="footer-copy">&copy; 2026 AJ MBBS ARCHIVE &bull; Clinical Excellence Hub</div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 800, once: true });
-
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const body = document.body;
-
-        const sunPath = "M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M17 12a5 5 0 1 1-10 0 5 5 0 0 1 10 0z";
-        const moonPath = "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z";
-
-        function updateIcon(isDark) {
-            if (themeIcon) {
-                themeIcon.querySelector('path').setAttribute('d', isDark ? sunPath : moonPath);
-            }
-        }
-
-        if (localStorage.getItem('theme') === 'dark') {
-            body.classList.add('dark-mode');
-            updateIcon(true);
-        }
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            updateIcon(isDark);
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
-        function activateSubjectFromSearch() {
-        // 1. Get the subject from URL (?subject=Anatomy)
-        const params = new URLSearchParams(window.location.search);
-        let targetSubject = params.get('subject');
-
-        if (targetSubject) {
-            // Standardize names (e.g., "Ophthalmology" search should match "Ophtha" button)
-            const subjectMap = {
-                "Forensic Medicine": "FMT",
-                "Preventive & Social Medicine": "PSM",
-                "Ophthalmology": "Ophtha",
-                "Obstetrics & Gynecology": "OBG"
-            };
-            
-            if(subjectMap[targetSubject]) targetSubject = subjectMap[targetSubject];
-
-            // 2. Find all subject buttons
-            const buttons = document.querySelectorAll('.subject-btn');
-            let targetElement = null;
-
-            // 3. Loop to find the one that matches the text
-            buttons.forEach(btn => {
-                if (btn.innerText.trim().toLowerCase() === targetSubject.toLowerCase()) {
-                    targetElement = btn;
-                }
-            });
-
-            if (targetElement) {
-                // 4. Smooth scroll to the button
-                setTimeout(() => {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 500);
-
-                // 5. Apply the Clinical Highlight Effect
-                targetElement.style.background = "var(--primary-light)";
-                targetElement.style.color = "white";
-                targetElement.style.border = "2px solid var(--primary-light)";
-                targetElement.style.boxShadow = "0 0 20px rgba(0, 168, 255, 0.6)";
-                targetElement.style.transform = "scale(1.1)";
-
-                // 6. Fade out the highlight after 3 seconds but keep it visible
-                setTimeout(() => {
-                    targetElement.style.boxShadow = "none";
-                    targetElement.style.transform = "scale(1)";
-                }, 3000);
-            }
-        }
-    }
-
-    // Initialize as soon as the page is ready
-    window.addEventListener('load', activateSubjectFromSearch);
-
-    </script>
+    <script src="js/shared.js"></script>
+    <script src="js/subpage.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>
