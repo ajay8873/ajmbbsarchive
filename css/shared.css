@@ -1,0 +1,286 @@
+/* ============================================
+   AJ MBBS ARCHIVE - SHARED DESIGN SYSTEM
+   Light mode default, matches screenshot UI
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* --- DESIGN TOKENS (Light Default) --- */
+:root {
+    --primary: #6c5ce7;
+    --primary-light: #a29bfe;
+    --bg: #f5f5f7;
+    --card-bg: #ffffff;
+    --text-main: #1a1a2e;
+    --text-sub: #6b7280;
+    --border: rgba(0, 0, 0, 0.06);
+    --glass: rgba(255, 255, 255, 0.92);
+    --neu-shadow: 6px 6px 16px rgba(0,0,0,0.06), -4px -4px 12px rgba(255,255,255,0.9);
+    --search-bg: rgba(0, 0, 0, 0.04);
+}
+
+/* --- DARK MODE --- */
+body.dark-mode {
+    --bg: #0a0a1a;
+    --card-bg: #141428;
+    --text-main: #f1f5f9;
+    --text-sub: #94a3b8;
+    --border: rgba(255, 255, 255, 0.08);
+    --glass: rgba(14, 14, 30, 0.95);
+    --neu-shadow: 4px 4px 12px rgba(0,0,0,0.4), -2px -2px 8px rgba(255,255,255,0.02);
+    --search-bg: rgba(255, 255, 255, 0.06);
+}
+
+/* --- RESET & BASE --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding-top: 70px;
+    transition: background 0.4s, color 0.4s;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== HEADER ===== */
+header {
+    position: fixed; top: 0; left: 0; right: 0; height: 65px;
+    background: var(--glass);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+}
+.header-left, .header-right { display: flex; align-items: center; gap: 10px; }
+.header-brand {
+    font-weight: 800; font-size: 1rem;
+    letter-spacing: 0.5px; text-transform: uppercase;
+}
+.header-brand span { color: var(--primary); }
+.header-btn {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-main); padding: 8px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 12px; transition: 0.2s;
+}
+.header-btn:hover { background: var(--search-bg); }
+
+/* ===== SEARCH ===== */
+.search-wrapper { position: relative; display: flex; align-items: center; }
+.search-expandable {
+    position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+    width: 0; overflow: hidden;
+    background: var(--card-bg);
+    border-radius: 14px;
+    display: flex; align-items: center;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), border 0.3s, box-shadow 0.3s;
+    z-index: 2001;
+}
+.search-expandable.active {
+    /* Ensures the bar doesn't push the dropdown off-screen on small devices */
+    width: calc(100vw - 100px); 
+    max-width: 300px;
+    border: 1.5px solid var(--primary);
+    box-shadow: 0 8px 30px rgba(108, 92, 231, 0.12);
+    /* Essential to see the dropdown */
+    overflow: visible !important; 
+}
+.search-input {
+    width: 100%; padding: 11px 35px 11px 16px;
+    border: none; background: transparent;
+    color: var(--text-main); font-family: inherit;
+    font-size: 0.88rem; outline: none;
+}
+.search-clear {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; font-size: 1.2rem;
+    color: var(--text-sub); cursor: pointer; display: none;
+    padding: 2px 6px;
+}
+.search-expandable.active .search-clear { display: block; }
+
+/* --- Suggestions Dropdown --- */
+.suggestions-dropdown {
+    position: absolute; 
+    top: 52px; 
+    /* Force alignment to the right edge of the search bar to keep it on screen */
+    right: 0;
+    left: auto; 
+    width: 100%;
+    /* Prevents the dropdown from being too skinny on small screens */
+    min-width: 260px; 
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+    z-index: 3000; 
+    display: none;
+    max-height: 350px; 
+    overflow-y: auto;
+    overflow-x: hidden;
+}@media (max-width: 480px) {
+    .suggestions-dropdown {
+        /* On very small phones, this ensures it doesn't hit the left wall */
+        width: calc(100vw - 40px);
+        right: -30px; 
+    }
+}
+/* Dark mode: stronger shadow & visible border for dropdown */
+body.dark-mode .suggestions-dropdown {
+    border: 1px solid rgba(108, 92, 231, 0.3);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+}
+.suggestions-dropdown.show { display: block; }
+.suggestion-item {
+    padding: 14px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    transition: background 0.2s;
+    color: var(--text-main);
+}
+.suggestion-item:last-child { border-bottom: none; }
+.suggestion-item:hover { background: rgba(108, 92, 231, 0.06); }
+body.dark-mode .suggestion-item:hover { background: rgba(108, 92, 231, 0.15); }
+.sug-info { display: flex; flex-direction: column; }
+.sug-name { font-weight: 700; font-size: 0.88rem; color: var(--text-main); }
+.sug-type { font-size: 0.6rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-sub); margin-top: 2px; }
+.sug-tag {
+    padding: 5px 14px; border-radius: 50px;
+    font-size: 0.6rem; font-weight: 800;
+    letter-spacing: 0.5px; text-transform: uppercase;
+    color: white; white-space: nowrap;
+}
+.sug-tag[data-p="Marrow"] { background: #6c5ce7; }
+.sug-tag[data-p="PrepLadder"] { background: #ff6b6b; }
+.sug-tag[data-p="Cerebellum"] { background: #2ecc71; }
+.sug-tag[data-p="Doc Tutorial"] { background: #f39c12; }
+.sug-tag[data-p="DAMS"] { background: #e74c3c; }
+.sug-tag[data-p="eGurukul"] { background: #2c3e50; }
+body.dark-mode .sug-tag[data-p="eGurukul"] { background: #5b7a99; }
+.sug-tag[data-p="Surgery Dada"] { background: #16a085; }
+.sug-tag.rr-tag { background: #00cec9 !important; }
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    position: fixed; top: 0; left: -340px; width: 320px; height: 100vh;
+    background: var(--card-bg); z-index: 2000;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 30px 24px;
+    overflow-y: auto;
+    box-shadow: 8px 0 30px rgba(0,0,0,0.1);
+}
+.sidebar.active { left: 0; }
+.sidebar-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 25px; padding-top: 10px;
+}
+.sidebar-title {
+    font-size: 1.1rem; font-weight: 800;
+    letter-spacing: 1px;
+}
+.sidebar-close {
+    background: none; border: none; font-size: 1.8rem;
+    cursor: pointer; color: var(--primary);
+    line-height: 1; padding: 0 4px;
+}
+.sidebar-search {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px;
+    background: var(--search-bg);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    position: relative;
+}
+.sidebar-search svg { flex-shrink: 0; opacity: 0.4; }
+.sidebar-search input {
+    flex: 1; border: none; background: none;
+    color: var(--text-main); font-family: inherit;
+    font-size: 0.85rem; outline: none;
+}
+.sidebar-sug {
+    position: absolute; top: 100%; left: 0; right: 0;
+    margin-top: 6px;
+}
+.sidebar-links {
+    list-style: none;
+    border-left: 3px solid var(--primary);
+    padding-left: 0;
+    margin-left: 10px;
+}
+.sidebar-links li { margin-bottom: 2px; }
+.sidebar-links li a {
+    display: block; padding: 14px 20px; margin-left: 15px;
+    text-decoration: none; color: var(--text-main);
+    font-weight: 700; font-size: 0.85rem;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    transition: 0.2s;
+}
+.sidebar-links li a:hover { background: rgba(108, 92, 231, 0.06); }
+.sidebar-links li a.active {
+    background: rgba(108, 92, 231, 0.08);
+    color: var(--primary);
+    font-weight: 800;
+}
+.install-link {
+    background: rgba(108, 92, 231, 0.08) !important;
+    color: var(--primary) !important;
+    border: 1px dashed var(--primary) !important;
+    text-align: center;
+}
+.sidebar-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.3); display: none; z-index: 1500;
+    backdrop-filter: blur(4px);
+}
+.sidebar-overlay.active { display: block; }
+
+/* ===== SHARED FOOTER ===== */
+.branded-footer {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+}
+.footer-brand {
+    font-weight: 800; font-size: 1rem;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 8px; color: var(--text-main);
+}
+.footer-brand span { color: var(--primary); }
+.footer-copy {
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-sub);
+}
+
+/* ===== DARK MODE ADDITIONAL FIXES ===== */
+body.dark-mode .search-expandable {
+    border-color: rgba(108, 92, 231, 0.2);
+}
+body.dark-mode .search-expandable.active {
+    border-color: var(--primary);
+    box-shadow: 0 8px 30px rgba(108, 92, 231, 0.2);
+}
+body.dark-mode .search-input::placeholder {
+    color: var(--text-sub);
+}
+body.dark-mode .sidebar {
+    box-shadow: 8px 0 30px rgba(0,0,0,0.4);
+}
+body.dark-mode .sidebar-overlay {
+    background: rgba(0,0,0,0.6);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    body { padding-top: 65px; }
+}
+@media (min-width: 768px) {
+    header { padding: 0 24px; }
+    .sidebar { width: 360px; }
+      }
