@@ -1,0 +1,296 @@
+/* ============================================
+   SUBPAGE SPECIFIC STYLES
+   Used by all pages except index.html
+   ============================================ */
+
+/* --- Page Content Area --- */
+.page-content {
+    width: 90%; max-width: 700px;
+    margin: 20px auto 0;
+    padding-bottom: 40px;
+}
+
+.page-title {
+    font-size: 1.8rem; font-weight: 800;
+    text-align: center; margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+.page-title span { color: var(--primary); }
+.page-subtitle {
+    text-align: center; color: var(--text-sub);
+    font-size: 0.85rem; font-weight: 500;
+    margin-bottom: 30px;
+}
+
+/* --- Section Headers --- */
+.section-label {
+    font-size: 0.7rem; color: var(--text-sub);
+    margin: 35px 0 12px;
+    text-transform: uppercase; letter-spacing: 2px;
+    font-weight: 800;
+    display: flex; align-items: center;
+}
+.section-label::after {
+    content: ""; flex: 1; height: 1px;
+    background: var(--border); margin-left: 15px;
+}
+
+/* --- Subject Grid --- */
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 12px;
+}
+.subject-btn {
+    padding: 16px 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 700; font-size: 0.8rem;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 56px;
+    box-shadow: var(--neu-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.subject-btn:hover {
+    background: var(--primary);
+    color: white !important;
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(108, 92, 231, 0.15);
+}
+
+/* Accent border variants */
+.gt-btn { border-left: 4px solid #ff9f43; }
+.rev-btn { border-left: 4px solid #feca57; }
+.pyq-btn { border-left: 4px solid #4834d4; }
+.btr-btn { border-left: 4px solid #f1c40f; }
+
+/* --- Divider Bar --- */
+.main-divider {
+    text-align: center;
+    background: var(--text-main);
+    color: var(--bg);
+    padding: 16px;
+    border-radius: 14px;
+    margin: 50px 0 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
+/* --- Jump/Nav Buttons --- */
+.jump-nav {
+    display: flex; gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+.jump-btn {
+    padding: 10px 22px;
+    border-radius: 50px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: var(--neu-shadow);
+    transition: 0.2s;
+}
+.jump-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* --- Note Card --- */
+.note-card {
+    background: rgba(108, 92, 231, 0.06);
+    color: var(--primary);
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid rgba(108, 92, 231, 0.15);
+    text-align: center;
+}
+
+/* --- Sub-Nav (PrepLadder style) --- */
+.sub-nav {
+    position: sticky; top: 65px;
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    padding: 14px 0;
+    z-index: 999;
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: center; gap: 12px;
+}
+.nav-pill {
+    text-decoration: none;
+    color: var(--text-sub);
+    font-size: 0.7rem; font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 24px;
+    border-radius: 50px;
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    transition: 0.3s; cursor: pointer;
+    box-shadow: var(--neu-shadow);
+}
+.nav-pill:hover { border-color: var(--primary); color: var(--primary); }
+.nav-pill.active {
+    background: var(--primary);
+    color: white !important;
+    border-color: var(--primary);
+    box-shadow: 0 6px 18px rgba(108, 92, 231, 0.25);
+}
+
+/* --- Doc Tutorial Mode Cards --- */
+.mode-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    width: 100%; max-width: 700px;
+}
+.mode-card {
+    padding: 45px 25px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 800; font-size: 1.1rem;
+    text-transform: uppercase; letter-spacing: 1px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    box-shadow: var(--neu-shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.mode-card:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(108, 92, 231, 0.12);
+}
+.mode-tag {
+    font-size: 0.65rem;
+    background: rgba(108, 92, 231, 0.08);
+    color: var(--primary);
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+/* --- Surgery Dada Card Style --- */
+.surgery-card {
+    padding: 22px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 700; font-size: 0.88rem;
+    display: flex; flex-direction: column; gap: 8px;
+    box-shadow: var(--neu-shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.surgery-card:hover {
+    background: var(--primary); color: white !important;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(108, 92, 231, 0.2);
+}
+.surgery-card .tag {
+    font-size: 0.6rem; text-transform: uppercase;
+    opacity: 0.6; letter-spacing: 1px;
+}
+.surgery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 15px;
+}
+
+/* --- Marrow Accordion --- */
+.subject-wrapper {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--neu-shadow);
+    transition: 0.3s;
+}
+.subject-wrapper.active {
+    border-color: var(--primary);
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.1);
+    border-width: 1.5px;
+}
+.subject-header {
+    width: 100%; padding: 18px;
+    background: none; border: none;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; color: var(--text-main);
+    font-family: inherit; font-weight: 700;
+    font-size: 0.88rem; text-align: left;
+}
+.subject-header:hover { background: rgba(108, 92, 231, 0.04); }
+.subject-header svg { transition: transform 0.3s; color: var(--primary); }
+.subject-wrapper.active .subject-header svg { transform: rotate(180deg); }
+.chapter-list {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(108, 92, 231, 0.015);
+}
+.subject-wrapper.active .chapter-list {
+    max-height: 450px; overflow-y: auto;
+    border-top: 1px solid var(--border);
+}
+.chapter-item {
+    padding: 11px 18px;
+    text-decoration: none; color: var(--text-sub);
+    font-size: 0.82rem;
+    display: flex; align-items: center;
+    border-bottom: 1px solid var(--border);
+    transition: 0.2s; cursor: pointer;
+}
+.chapter-item:last-child { border-bottom: none; }
+.chapter-item:hover { background: var(--primary); color: white; padding-left: 24px; }
+.chapter-item::before { content: '•'; margin-right: 10px; color: var(--primary); font-weight: 800; }
+.chapter-item:hover::before { color: white; }
+
+.marrow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px; margin-bottom: 25px;
+}
+
+/* --- RR Section (PrepLadder) --- */
+.rr-section .subject-btn { border-left: 4px solid #00cec9; }
+.rr-section .subject-btn:hover { background: #00cec9; border-color: #00cec9; }
+.rr-active .nav-pill.active {
+    background: #00cec9 !important;
+    border-color: #00cec9 !important;
+    box-shadow: 0 6px 18px rgba(0, 206, 201, 0.25) !important;
+}
+.divider { height: 1px; background: var(--border); margin: 60px 0; }
+
+/* --- Search Highlight Animation --- */
+@keyframes pulseHighlight {
+    0% { box-shadow: 0 0 0px var(--primary); }
+    50% { box-shadow: 0 0 20px var(--primary); }
+    100% { box-shadow: 0 0 0px var(--primary); }
+}
+
+@media (max-width: 480px) {
+    .subject-grid { grid-template-columns: 1fr 1fr; }
+    .page-title { font-size: 1.4rem; }
+    .marrow-grid { grid-template-columns: 1fr; }
+    .nav-pill { padding: 8px 14px; font-size: 0.6rem; }
+    .surgery-grid { grid-template-columns: 1fr; }
+  }
+  
